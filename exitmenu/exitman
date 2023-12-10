@@ -1,0 +1,24 @@
+echo "exit manager v1.0";
+echo "s shutdown"
+echo "r reboot"
+echo "o logout"
+echo "q my bad"
+echo -n ">>"
+ 
+while :
+do
+
+read choice
+
+
+case $choice in
+  "s")  shutdown -h now;;
+  "r")  reboot;;
+  "o")  cinnamon-session-quit --logout --no-prompt;;    
+  "q")  exit;;
+  *) echo "invalid option";;
+  
+esac
+  echo -n ">>"
+echo ""
+done
