@@ -1,0 +1,2 @@
+#!/usr/bin/bash
+cc main.cpp -o main -lraylib -lGL -lX11 -lrt -lpthread -ldl -lm
