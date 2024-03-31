@@ -1,0 +1,7 @@
+#rotbtn{
+	rotate: 0deg;
+	transition: 2s;
+}
+#rotbtn:hover{
+	rotate: 720deg;
+}

@@ -1,0 +1,61 @@
+#include<stdio.h>
+#include<stdlib.h>
+
+typedef struct queue{
+  int data[5];
+  int front, rear;
+  int len;
+}queue;
+
+queue* new_queue(){
+  queue* new = malloc(sizeof(queue));
+  new->front = -1;
+  new->rear = -1;
+  new->len = 4;
+  return new;
+}
+
+void enqueue(queue * que, int num){
+  if (que->rear == que->len){
+    printf("queue is full");
+  };
+
+  if (que->front == -1){
+    que->front = 0;
+    que->rear = 0;
+  }
+  else{
+    que->rear += 1;
+  };
+
+  que->data[que->rear] = num;
+}
+
+int dequeue(queue * que){
+  if (que->front = -1){
+    printf("queue is empty");
+  }
+
+  int num; num = que->data[que->front];
+  
+  if (que->front == que->rear){
+    que->front = -1;
+    que->rear = -1;
+  }
+  else{
+    que->front += 1;
+  }
+  return num;
+}
+
+int main(){
+
+  queue * myqueue = new_queue();
+
+  enqueue(myqueue, 10);
+  enqueue(myqueue, 20);
+  enqueue(myqueue, 30);
+  enqueue(myqueue, 40);
+
+  return 0;
+}
