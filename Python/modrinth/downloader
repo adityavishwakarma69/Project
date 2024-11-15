@@ -1,0 +1,26 @@
+#!/bin/env python3
+import json
+import sys
+import subprocess
+
+name = sys.argv[0]
+
+try:
+    filepath = sys.argv[1]
+    try:
+        outdir = sys.argv[2]
+    except:
+        outdir = "."
+except:
+    print("No file given process abandoned with exit code 1")
+    exit(0)
+
+with open(filepath, 'r') as file:
+    data = file.read()
+
+jsondata = json.loads(data)
+
+for file in jsondata["files"]:
+    for url in file["downloads"]:
+        subprocess.Popen(["curl", url, "-O", "--output-dir", outdir])
+

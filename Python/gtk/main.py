@@ -1,21 +1,28 @@
 import gi
 gi.require_version('Gtk', '3.0')
 from gi.repository import Gtk
+import time
 
-class MyWindow(Gtk.Window):
+class MyBar(Gtk.Window):
 
     def __init__(self):
-        Gtk.Window.__init__(self, title="Hello World")
+        Gtk.Window.__init__(self, title="MyBar")
+        self.set_default_size(400, 40)
+        self.connect("destroy", Gtk.main_quit)
 
-        self.button = Gtk.Button(label="Click Here")
-        self.button.connect("clicked", self.on_button_clicked)
-        self.add(self.button)
+        self.box = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL, spacing=10)
+        self.add(self.box)
 
-    def on_button_clicked(self, widget):
-        print("Hello World")
+        self.label = Gtk.Label(label="")
+        self.box.pack_start(self.label, True, True, 0)
 
-win = MyWindow()
-win.connect("destroy", Gtk.main_quit)
+        self.update_clock()
+
+    def update_clock(self):
+        current_time = time.strftime("%H:%M:%S")
+        self.label.set_text(current_time)
+        return True
+
+win = MyBar()
 win.show_all()
 Gtk.main()
-

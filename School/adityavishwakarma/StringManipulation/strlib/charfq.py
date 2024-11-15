@@ -8,6 +8,7 @@ def charFreq(st):
 
     return dt
 
+
 def wordFreq(st):
     dt = {}
     buffer = ''
@@ -18,15 +19,16 @@ def wordFreq(st):
             if not buffer in dt:
                 dt[buffer] = 1
             else:
-                dt[buffer]  += 1
+                dt[buffer] += 1
             buffer = ''
 
     if not buffer in dt:
         dt[buffer] = 1
     else:
-        dt[buffer]  += 1
-        
+        dt[buffer] += 1
+
     return dt
+
 
 def isanagram(st1, st2):
     return charFreq(st1) == charFreq(st2)
